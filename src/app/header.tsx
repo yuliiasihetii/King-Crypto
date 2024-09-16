@@ -3,16 +3,14 @@ import { HeaderContainer } from "./styles";
 import { headerLinks } from "./common";
 import Logo from "@/assets/lego.png";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { FC } from "react";
 import { useIsDesktop } from "@/hooks/is-desktop";
+import { useScrollStore } from "@/store/scrollStore";
 
-interface HeaderProps {
-  scrollToSection: (sectionName: string) => void;
-}
-
-export const Header: FC<HeaderProps> = ({ scrollToSection }) => {
+export const Header = () => {
   const { openConnectModal } = useConnectModal();
   const isDesktop = useIsDesktop();
+  const { scrollToSection } = useScrollStore();
+
   return (
     <HeaderContainer bgcolor="background.default">
       <Stack gap="8px" alignItems="center">

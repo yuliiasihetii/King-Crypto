@@ -2,19 +2,14 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { Header } from "./header";
 import Hero from "@/assets/hero.webp";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { FC } from "react";
 import { useIsDesktop } from "@/hooks/is-desktop";
 
-interface HeroSectionProps {
-  scrollToSection: (sectionName: string) => void;
-}
-
-export const HeroSection: FC<HeroSectionProps> = ({ scrollToSection }) => {
+export const HeroSection = () => {
   const { openConnectModal } = useConnectModal();
   const isDesktop = useIsDesktop();
   return (
     <Box bgcolor="background.primary" pt="20px">
-      <Header scrollToSection={scrollToSection} />
+      <Header />
       <Box p="100px 20px" maxWidth="1300px" margin="0 auto">
         <Stack
           flexDirection={!isDesktop ? "column-reverse" : "row"}
@@ -44,7 +39,11 @@ export const HeroSection: FC<HeroSectionProps> = ({ scrollToSection }) => {
               >
                 Check your wallet
               </Button>
-              <Button size="large" onClick={openConnectModal}>
+              <Button
+                variant="outlined"
+                size="large"
+                onClick={openConnectModal}
+              >
                 Dashboard
               </Button>
             </Stack>

@@ -7,6 +7,10 @@ export declare module "@mui/material/styles" {
     body3?: React.CSSProperties;
     body4?: React.CSSProperties;
   }
+
+  interface TypeBackground {
+    secondary?: string;
+  }
 }
 export declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {

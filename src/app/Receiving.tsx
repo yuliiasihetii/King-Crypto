@@ -1,18 +1,15 @@
 import { useIsDesktop } from "@/hooks/is-desktop";
-import { SectionRefs } from "@/hooks/use-scroll";
+import { useScrollStore } from "@/store/scrollStore";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { FC, useState } from "react";
+import { useState } from "react";
 
-interface ReceivingProps {
-  sectionRefs: SectionRefs;
-}
-
-export const Receiving: FC<ReceivingProps> = ({ sectionRefs }) => {
+export const Receiving = () => {
   const { openConnectModal } = useConnectModal();
   const [amount, setAmount] = useState<number>(1000);
   const [timeframe, setTimeframe] = useState<number>(30);
   const isDesktop = useIsDesktop();
+  const { sectionRefs } = useScrollStore();
 
   return (
     <Box

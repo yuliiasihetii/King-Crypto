@@ -7,14 +7,10 @@ import {
 } from "@mui/material";
 import { faqData } from "./common";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { SectionRefs } from "@/hooks/use-scroll";
-import { FC } from "react";
+import { useScrollStore } from "@/store/scrollStore";
 
-interface FAQProps {
-  sectionRefs: SectionRefs;
-}
-
-export const FAQ: FC<FAQProps> = ({ sectionRefs }) => {
+export const FAQ = () => {
+  const { sectionRefs } = useScrollStore();
   return (
     <Box ref={sectionRefs.FAQ}>
       <Typography variant="h2" align="center" mb="40px">

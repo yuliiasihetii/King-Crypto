@@ -65,3 +65,14 @@ export const AchievementItemContainer = styled(Stack)({
   borderRadius: "50%",
   border: "1px solid #eff2fc",
 });
+
+export const ModalContainer = styled(Stack)({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  flexDirection: "column",
+  padding: "30px",
+  borderRadius: "16px",
+});

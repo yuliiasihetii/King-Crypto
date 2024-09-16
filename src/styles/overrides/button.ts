@@ -22,5 +22,15 @@ export const buttonOverrides: Components<Theme>["MuiButton"] = {
       backgroundColor: theme.palette.background.secondary,
       boxShadow: "none",
     }),
+
+    text: {
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      borderColor: "transparent",
+      color: "inherit",
+      "&:hover": {
+        borderColor: "transparent",
+      },
+    },
   },
 };

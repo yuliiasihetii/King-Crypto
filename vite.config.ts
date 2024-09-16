@@ -19,9 +19,8 @@ export default defineConfig({
       "@/app": "/src/app/",
       "@/hooks": "/src/hooks/",
       "@/pages": "/src/pages/",
-      "@/routes": "/src/routes/",
-      "@/shared": "/src/shared/",
       "@/styles": "/src/styles/",
+      "@/store": "/src/store/",
     },
   },
 });

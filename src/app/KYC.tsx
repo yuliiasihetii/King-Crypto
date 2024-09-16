@@ -1,17 +1,13 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import KYCImg from "@/assets/KYC.webp";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { SectionRefs } from "@/hooks/use-scroll";
-import { FC } from "react";
 import { useIsDesktop } from "@/hooks/is-desktop";
+import { useScrollStore } from "@/store/scrollStore";
 
-interface KYCProps {
-  sectionRefs: SectionRefs;
-}
-
-export const KYC: FC<KYCProps> = ({ sectionRefs }) => {
+export const KYC = () => {
   const { openConnectModal } = useConnectModal();
   const isDesktop = useIsDesktop();
+  const { sectionRefs } = useScrollStore();
   return (
     <Box
       ref={sectionRefs.Info}
@@ -40,7 +36,7 @@ export const KYC: FC<KYCProps> = ({ sectionRefs }) => {
             crypto wallet against blocks and fraudsters.
           </Typography>
 
-          <Button size="large" onClick={openConnectModal}>
+          <Button size="large" variant="outlined" onClick={openConnectModal}>
             Check your wallet
           </Button>
         </Box>
