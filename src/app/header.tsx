@@ -2,14 +2,14 @@ import { Button, Link, Stack, Typography } from "@mui/material";
 import { HeaderContainer } from "./styles";
 import { headerLinks } from "./common";
 import Logo from "@/assets/lego.png";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useIsDesktop } from "@/hooks/is-desktop";
 import { useScrollStore } from "@/store/scrollStore";
+import { useWallet } from "@/hooks/use-wallet";
 
 export const Header = () => {
-  const { openConnectModal } = useConnectModal();
   const isDesktop = useIsDesktop();
   const { scrollToSection } = useScrollStore();
+  const { handleDeposit } = useWallet();
 
   return (
     <HeaderContainer bgcolor="background.default">
@@ -39,7 +39,7 @@ export const Header = () => {
           ))}
         </Stack>
       )}
-      <Button variant="contained" size="medium" onClick={openConnectModal}>
+      <Button variant="contained" size="medium" onClick={handleDeposit}>
         Start Investing
       </Button>
     </HeaderContainer>

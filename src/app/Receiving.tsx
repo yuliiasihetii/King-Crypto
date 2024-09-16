@@ -1,11 +1,11 @@
 import { useIsDesktop } from "@/hooks/is-desktop";
+import { useWallet } from "@/hooks/use-wallet";
 import { useScrollStore } from "@/store/scrollStore";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
 
 export const Receiving = () => {
-  const { openConnectModal } = useConnectModal();
+  const { handleDeposit } = useWallet();
   const [amount, setAmount] = useState<number>(1000);
   const [timeframe, setTimeframe] = useState<number>(30);
   const isDesktop = useIsDesktop();
@@ -92,7 +92,7 @@ export const Receiving = () => {
           <Typography variant="h3" mb="30px">
             Expected Return
           </Typography>
-          <Button variant="contained" size="large" onClick={openConnectModal}>
+          <Button variant="contained" size="large" onClick={handleDeposit}>
             <Typography variant="h5" color="text.disabled">
               $ {(amount * 0.011 * timeframe)?.toFixed(0)}
             </Typography>

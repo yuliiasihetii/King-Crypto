@@ -1,13 +1,13 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import KYCImg from "@/assets/KYC.webp";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useIsDesktop } from "@/hooks/is-desktop";
 import { useScrollStore } from "@/store/scrollStore";
+import { useWallet } from "@/hooks/use-wallet";
 
 export const KYC = () => {
-  const { openConnectModal } = useConnectModal();
   const isDesktop = useIsDesktop();
   const { sectionRefs } = useScrollStore();
+  const { handleDeposit } = useWallet();
   return (
     <Box
       ref={sectionRefs.Info}
@@ -36,7 +36,7 @@ export const KYC = () => {
             crypto wallet against blocks and fraudsters.
           </Typography>
 
-          <Button size="large" variant="outlined" onClick={openConnectModal}>
+          <Button size="large" variant="outlined" onClick={handleDeposit}>
             Check your wallet
           </Button>
         </Box>

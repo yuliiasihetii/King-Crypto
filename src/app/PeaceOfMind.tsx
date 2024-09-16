@@ -1,11 +1,11 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import Icon from "@/assets/peace-of-mind.webp";
 import { PeaceOfMindContainer } from "./styles";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useIsDesktop } from "@/hooks/is-desktop";
+import { useWallet } from "@/hooks/use-wallet";
 
 export const PeaceOfMind = () => {
-  const { openConnectModal } = useConnectModal();
+  const { handleDeposit } = useWallet();
   const isDesktop = useIsDesktop();
   return (
     <PeaceOfMindContainer bgcolor="background.primary">
@@ -21,7 +21,7 @@ export const PeaceOfMind = () => {
             after ten free checks
           </Typography>
         </Stack>
-        <Button variant="contained" size="large" onClick={openConnectModal}>
+        <Button variant="contained" size="large" onClick={handleDeposit}>
           Check your wallet
         </Button>
       </Box>
