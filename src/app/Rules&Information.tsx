@@ -1,10 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import { rulesInformationData } from "./common";
 import { RulesInformationContainer } from "./styles";
-import { useScrollStore } from "@/store/scrollStore";
+import { SectionRefs } from "@/hooks/use-scroll";
+import { FC } from "react";
 
-export const RulesInformation = () => {
-  const { sectionRefs } = useScrollStore();
+interface RulesInformationProps {
+  sectionRefs: SectionRefs;
+}
+
+export const RulesInformation: FC<RulesInformationProps> = ({
+  sectionRefs,
+}) => {
   return (
     <Box
       ref={sectionRefs.Rules}

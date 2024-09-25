@@ -1,9 +1,9 @@
 import { useIsDesktop } from "@/hooks/is-desktop";
-import { useWallet } from "@/hooks/use-wallet";
 import { Box, Button, Stack, Typography } from "@mui/material";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 export const AskQuestion = () => {
-  const { handleDeposit } = useWallet();
+  const { openConnectModal } = useConnectModal();
   const isDesktop = useIsDesktop();
   return (
     <Box bgcolor="#3490fc26" padding="40px" mt="50px">
@@ -31,7 +31,7 @@ export const AskQuestion = () => {
             percentage of funds received or sent to these services.
           </Typography>
         </Box>
-        <Button variant="contained" size="medium" onClick={handleDeposit}>
+        <Button variant="contained" size="medium" onClick={openConnectModal}>
           Ask a question
         </Button>
       </Stack>

@@ -14,7 +14,4 @@ export const colors = {
     main: "rgba(0, 0, 0, 0.2)",
     dark: "rgba(0, 0, 0, 0.6)",
   },
-  error: {
-    main: "#EE3125",
-  },
 };

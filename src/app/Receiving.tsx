@@ -1,15 +1,18 @@
 import { useIsDesktop } from "@/hooks/is-desktop";
-import { useWallet } from "@/hooks/use-wallet";
-import { useScrollStore } from "@/store/scrollStore";
+import { SectionRefs } from "@/hooks/use-scroll";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { FC, useState } from "react";
 
-export const Receiving = () => {
-  const { handleDeposit } = useWallet();
+interface ReceivingProps {
+  sectionRefs: SectionRefs;
+}
+
+export const Receiving: FC<ReceivingProps> = ({ sectionRefs }) => {
+  const { openConnectModal } = useConnectModal();
   const [amount, setAmount] = useState<number>(1000);
   const [timeframe, setTimeframe] = useState<number>(30);
   const isDesktop = useIsDesktop();
-  const { sectionRefs } = useScrollStore();
 
   return (
     <Box
@@ -92,7 +95,7 @@ export const Receiving = () => {
           <Typography variant="h3" mb="30px">
             Expected Return
           </Typography>
-          <Button variant="contained" size="large" onClick={handleDeposit}>
+          <Button variant="contained" size="large" onClick={openConnectModal}>
             <Typography variant="h5" color="text.disabled">
               $ {(amount * 0.011 * timeframe)?.toFixed(0)}
             </Typography>
